@@ -1,7 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Auth/AuthContext';
 
 const NavBar = () => {
+    const user = use(AuthContext);
     const links = <>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/allproducts">All Products</NavLink>
@@ -22,8 +24,20 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className='col-span-3 flex justify-end gap-5'>
-                    <button className='btn btn-huboutline'>Login</button>
-                    <button className='btn btn-hubprimary'>Register</button>
+                    {
+                        user ?
+                            <button className='btn btn-huboutline'>Logout</button>
+                            :
+                            <div className=' flex justify-end gap-5'>
+                                <Link to='/auth/login'>
+                                    <button className='btn btn-huboutline'>Login</button>
+                                </Link>
+                                <Link to='/auth/register'>
+                                    <button className='btn btn-hubprimary'>Register</button>
+                                </Link>
+                            </div>
+
+                    }
                 </div>
             </div>
         </div>
