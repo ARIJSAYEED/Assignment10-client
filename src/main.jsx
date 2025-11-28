@@ -10,6 +10,11 @@ import AuthLayout from './Layout/AuthLayout.jsx'
 import Login from './Components/Login.jsx'
 import Register from './Components/Register.jsx'
 import AuthProvider from './Auth/AuthProvider.jsx'
+import MyExports from './Components/MyExports.jsx'
+import MyImports from './MyImports.jsx'
+import ExportProducts from './Components/ExportProducts.jsx'
+import ImportProducts from './Components/ImportProducts.jsx'
+import PrivateRoute from './PrivateRoute/PrivateRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -24,6 +29,30 @@ const router = createBrowserRouter([
         path: '/allproducts',
         loader: () => fetch('http://localhost:3000/products'),
         element: <AllProducts></AllProducts>
+      },
+      {
+        path:'/myexports',
+        element:<PrivateRoute>
+          <MyExports></MyExports>
+        </PrivateRoute>
+      },
+      {
+        path:'/myimports',
+        element:<PrivateRoute>
+          <MyImports></MyImports>
+        </PrivateRoute>
+      },
+      {
+        path:'/exportProducts',
+        element: <PrivateRoute>
+          <ExportProducts></ExportProducts>
+        </PrivateRoute>
+      },
+      {
+        path:'/importProducts',
+        element:<PrivateRoute>
+          <ImportProducts></ImportProducts>
+        </PrivateRoute>
       }
     ]
   },

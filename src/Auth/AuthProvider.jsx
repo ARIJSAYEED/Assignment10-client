@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     console.log('in the state the user is', user);
 
     const signInWithGoogle = () => {
-        return signInWithPopup(auth, provider)
+        return signInWithPopup(auth, provider);
     }
 
     const signOutUser = () => {
@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             console.log('this is the current user', currentUser);
             return () => {
-                unsubscribe()
+                unsubscribe();
             }
         })
     }, [])
