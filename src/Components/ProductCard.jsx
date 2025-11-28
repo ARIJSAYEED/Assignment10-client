@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const ProductCard = ({ product }) => {
     return (
-        <div className='border border-neutral-300 p-5 rounded-lg shadow-md space-y-5 hover:scale-105 transition-all duration-300'>
+        <div className='border border-neutral-300 p-5 rounded-lg shadow-lg space-y-5 hover:scale-105 transition-all duration-300'>
             <div>
                 <img className='h-60 w-full object-cover rounded-lg' src={product.image} alt="" />
             </div>
@@ -30,9 +30,11 @@ const ProductCard = ({ product }) => {
                 </div>
             </div>
             <div>
-                <button className='btn btn-hubprimary capitalize w-full'>
-                    <Link to={`/productDetails/${product._id}`}>see details</Link>
-                </button>
+                <Link to={`/productDetails/${product._id}`}>
+                    <button className='btn btn-hubprimary capitalize w-full'>
+                        see details
+                    </button>
+                </Link>
             </div>
         </div>
     );

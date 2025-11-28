@@ -7,7 +7,7 @@ const Root = () => {
     return (
     <div className='max-w-7xl mx-auto'>
       <NavBar></NavBar>
-      <div className='h-10'></div>
+      {/* <div className='h-10'></div> */}
       <Outlet></Outlet>
       {/* <LatestProduct></LatestProduct> */}
     </div>

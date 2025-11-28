@@ -17,7 +17,7 @@ const NavBar = () => {
                     <h1 className='text-sm font-semibold'>Export-Import<br /><span className='text-5xl uppercase font-extrabold logotext'>Hub</span></h1>
                 </div>
                 <div className='col-span-6'>
-                    <ul className='flex justify-center gap-5'>
+                    <ul className='flex justify-center gap-7 text-sm'>
                         {links}
                     </ul>
                 </div>
