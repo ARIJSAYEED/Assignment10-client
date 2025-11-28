@@ -15,10 +15,14 @@ const NavBar = () => {
     const links = <>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/allproducts">All Products</NavLink>
-        <NavLink to="/myexports">My Exports</NavLink>
-        <NavLink to="/myimports">My Imports</NavLink>
-        <NavLink to="/exportproducts">Export Products</NavLink>
-        <NavLink to="/importproducts">Import Products</NavLink>
+        {
+            user && <>
+                <NavLink to="/myexports">My Exports</NavLink>
+                <NavLink to="/myimports">My Imports</NavLink>
+                <NavLink to="/exportproducts">Export Products</NavLink>
+                <NavLink to="/importproducts">Import Products</NavLink>
+            </>
+        }
     </>
     return (
         <div className='sticky top-0 z-10 bg-white'>

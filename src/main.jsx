@@ -15,6 +15,7 @@ import MyImports from './MyImports.jsx'
 import ExportProducts from './Components/ExportProducts.jsx'
 import ImportProducts from './Components/ImportProducts.jsx'
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx'
+import ProductDetails from './Components/ProductDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -31,34 +32,37 @@ const router = createBrowserRouter([
         element: <AllProducts></AllProducts>
       },
       {
-        path:'/myexports',
-        element:<PrivateRoute>
+        path: '/productDetails/:id',
+        loader:({params})=>fetch(`http://localhost:3000/productDetails/${params.id}`),
+        element:<ProductDetails></ProductDetails>
+      },
+      {
+        path: '/myexports',
+        element: <PrivateRoute>
           <MyExports></MyExports>
         </PrivateRoute>
       },
       {
-        path:'/myimports',
-        element:<PrivateRoute>
+        path: '/myimports',
+        element: <PrivateRoute>
           <MyImports></MyImports>
         </PrivateRoute>
       },
       {
-        path:'/exportProducts',
+        path: '/exportProducts',
         element: <PrivateRoute>
           <ExportProducts></ExportProducts>
         </PrivateRoute>
       },
       {
-        path:'/importProducts',
-        element:<PrivateRoute>
+        path: '/importProducts',
+        element: <PrivateRoute>
           <ImportProducts></ImportProducts>
         </PrivateRoute>
       }
     ]
   },
-  {
-    path: '/productsDetails/:id',
-  },
+
   {
     path: '/auth',
     element: <AuthLayout></AuthLayout>,
