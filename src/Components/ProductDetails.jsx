@@ -7,15 +7,15 @@ const ProductDetails = () => {
     let product = useLoaderData();
     console.log(product);
     return (
-        <div className='py-10'>
+        <div className='py-10 px-3'>
             <div className='grid grid-cols-2 gap-5'>
                 <div>
                     <img className='h-full object-cover rounded-lg' src={product.image} alt="" />
                 </div>
                 <div className='space-y-5'>
-                    <Link className='flex items-center gap-2'>
+                    <Link  to='/'  className='flex items-center gap-2'>
                         <FaArrowLeft></FaArrowLeft>
-                        <p to='/' className='text-md font-semibold'>Back to Home</p>
+                        <p className='text-md font-semibold'>Back to Home</p>
                     </Link>
                     <h1 className='text-5xl font-bold logotext'>{product.title}</h1>
                     <div className='border-b'></div>
@@ -33,8 +33,8 @@ const ProductDetails = () => {
                         <div className='flex gap-5 items-center'>
                             <img className='h-15 w-15 rounded-full p-2 btn' src={product.seller_image} alt="" />
                             <div>
-                                <p>{product.seller_name}</p>
-                                <p>{product.email}</p>
+                                <p><span  className='text-md font-semibold'>Name: </span>{product.seller_name}</p>
+                                <p><span className='text-md font-semibold'>Email: </span>{product.email}</p>
                             </div>
                         </div>
                     </div>
