@@ -1,6 +1,18 @@
 import React from 'react';
 
-const ImportedProductCard = ({ product }) => {
+const ImportedProductCard = ({ product,handleRemove }) => {
+    // const handleRemove = (_id) => {
+    //     console.log(_id);
+
+    //     // delete imported product from the database imported collection
+    //     fetch(`http://localhost:3000/myimports/${_id}`, {
+    //         method: 'DELETE'
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log('the import product was deleted successfully', data);
+    //         })
+    // }
     return (
         <div className='border border-neutral-300 p-5 rounded-lg shadow-lg space-y-5 hover:scale-105 transition-all duration-300'>
             <div>
@@ -28,9 +40,12 @@ const ImportedProductCard = ({ product }) => {
                     <p>By: {product.seller_name}</p>
                 </div>
             </div>
-            <div>
-                <button className='btn btn-hubprimary capitalize w-full'>
-                    Delete
+            <div className='flex justify-between'>
+                <button className='btn btn-hubprimary capitalize w-1/3'>
+                    update
+                </button>
+                <button onClick={() => handleRemove(product._id)} className='btn btn-huboutline capitalize w-1/3'>
+                    Remove
                 </button>
             </div>
         </div>

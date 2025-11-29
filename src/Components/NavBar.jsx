@@ -13,13 +13,13 @@ const NavBar = () => {
 
 
     const links = <>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/allproducts">All Products</NavLink>
+        <NavLink className="px-3 py-2 rounded-sm" to="/">Home</NavLink>
+        <NavLink className="px-3 py-2 rounded-sm" to="/allproducts">All Products</NavLink>
         {
             user && <>
-                <NavLink to="/myexports">My Exports</NavLink>
-                <NavLink to="/myimports">My Imports</NavLink>
-                <NavLink to="/exportproducts">Export Products</NavLink>
+                <NavLink className="px-3 py-2 rounded-sm" to="/myexports">My Exports</NavLink>
+                <NavLink className="px-3 py-2 rounded-sm" to="/myimports">My Imports</NavLink>
+                <NavLink className="px-3 py-2 rounded-sm" to="/exportproducts">Export Products</NavLink>
                 {/* <NavLink to="/importproducts">Import Products</NavLink> */}
             </>
         }
@@ -31,7 +31,7 @@ const NavBar = () => {
                     <h1 className='text-sm font-semibold'>Export-Import<br /><span className='text-5xl uppercase font-extrabold logotext'>Hub</span></h1>
                 </div>
                 <div className='col-span-6'>
-                    <ul className='flex justify-center gap-7 text-sm'>
+                    <ul className='flex justify-center items-center gap-7 text-sm'>
                         {links}
                     </ul>
                 </div>

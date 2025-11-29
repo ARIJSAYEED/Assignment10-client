@@ -23,7 +23,7 @@ const MyExports = () => {
             </div>
             <div className="grid grid-cols-3 gap-5">
                 {
-                    exportsList.map(product=><ExportedProductCard product={product}></ExportedProductCard>)
+                    exportsList.map(product=><ExportedProductCard key={product._id} product={product}></ExportedProductCard>)
                 }
             </div>
         </div>

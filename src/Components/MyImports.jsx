@@ -3,17 +3,38 @@ import ImportedProductCard from './ImportedProductCard';
 import { AuthContext } from '../Auth/AuthContext';
 
 const MyImports = () => {
-    let {user}=use(AuthContext);
 
-    let [importList,setImportList]=useState([]);
-    console.log(importList);
+    let { user } = use(AuthContext);
+
+    let [importList, setImportList] = useState([]);
+
+    console.log('myimport state', importList);
+
+    const handleRemove = (_id) => {
+        console.log(_id);
+
+        // delete imported product from the database imported collection
+        fetch(`http://localhost:3000/myimports/${_id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount) {
+                    // Remove from UI state
+                    setImportList(importList.filter(product => product._id !== _id));
+                }
+            })
+    }
+
     useEffect(() => {
-            if (!user?.email) return;
-            fetch(`http://localhost:3000/myimports?email=${user.email}`)
-                .then(res => res.json())
-                .then(data => setImportList(data))
-                .catch(err => console.log(err));
-        }, [user]);
+        if (!user?.email) return;
+        fetch(`http://localhost:3000/myimports?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setImportList(data)
+            })
+            .catch(err => console.log(err));
+    }, [user]);
     return (
         <div className='space-y-10 px-3 mt-10'>
             <div className='text-center'>
@@ -22,7 +43,11 @@ const MyImports = () => {
             </div>
             <div className="grid grid-cols-3 gap-5">
                 {
-                    importList.map(product=><ImportedProductCard product={product} ></ImportedProductCard>)
+                    importList.map(product => <ImportedProductCard
+                        handleRemove={handleRemove}
+                        key={product._id}
+                        product={product} >
+                    </ImportedProductCard>)
                 }
             </div>
         </div>
