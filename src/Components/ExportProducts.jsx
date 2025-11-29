@@ -50,8 +50,10 @@ const ExportProducts = () => {
             newExport._id = data.insertedId;
             const newExports =[...exports,newExport]
             setExports(newExports)
+            alert('The product has been added successfully')
         })
     }
+
     return (
         <div className='px-3 py-10'>
             <form onSubmit={handleExport} className='space-y-5 flex flex-col gap-5 items-center'>

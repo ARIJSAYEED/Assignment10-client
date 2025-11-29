@@ -9,8 +9,10 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
     console.log('in the state the user is', user);
+    const [loading, setLoading] = useState(true);
 
     const signInWithGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, provider);
     }
 
@@ -22,6 +24,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             console.log('this is the current user', currentUser);
+            // setLoading(false);
             return () => {
                 unsubscribe();
             }
@@ -33,6 +36,7 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         signOutUser,
+        loading,
     }
     return <AuthContext value={authInfo}>
         {children}

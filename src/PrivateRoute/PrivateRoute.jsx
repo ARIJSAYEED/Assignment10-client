@@ -4,8 +4,10 @@ import { Navigate } from 'react-router';
 
 const PrivateRoute = ({children}) => {
 
-    const {user}=use(AuthContext)
-
+    const {user,loading}=use(AuthContext)
+    // if (loading) {
+    //     return <span className="loading loading-spinner loading-xl"></span>;
+    // }
     if (user) {
         return children
     }

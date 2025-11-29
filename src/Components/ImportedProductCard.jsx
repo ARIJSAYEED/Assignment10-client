@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router';
 
-const ImportedProductCard = ({ product,handleRemove }) => {
+const ImportedProductCard = ({ product, handleRemove }) => {
     // const handleRemove = (_id) => {
     //     console.log(_id);
 
@@ -27,7 +28,7 @@ const ImportedProductCard = ({ product,handleRemove }) => {
                     <p>Rating: {product.rating}</p>
                 </div>
                 <div>
-                    <p>Available Amount: {product.quantity}</p>
+                    <p>Imported Quantity: {product.quantity}</p>
                 </div>
             </div>
             <div className='border-b border-neutral-300'></div>
@@ -41,9 +42,11 @@ const ImportedProductCard = ({ product,handleRemove }) => {
                 </div>
             </div>
             <div className='flex justify-between'>
-                <button className='btn btn-hubprimary capitalize w-1/3'>
-                    update
-                </button>
+                <Link to={`/productDetails/${product.original_id}`} className='w-1/3'>
+                    <button className='btn btn-hubprimary capitalize w-full'>
+                        see details
+                    </button>
+                </Link>
                 <button onClick={() => handleRemove(product._id)} className='btn btn-huboutline capitalize w-1/3'>
                     Remove
                 </button>

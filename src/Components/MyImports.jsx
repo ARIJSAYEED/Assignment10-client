@@ -20,6 +20,7 @@ const MyImports = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount) {
+                    alert('The product has been removed successfully')
                     // Remove from UI state
                     setImportList(importList.filter(product => product._id !== _id));
                 }

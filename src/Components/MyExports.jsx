@@ -15,6 +15,18 @@ const MyExports = () => {
             .catch(err => console.log(err));
     }, [user]);
 
+    const handleDelete=(_id)=>{
+        // delete that product from database
+        fetch(`http://localhost:3000/products/${_id}`,{
+            method:'DELETE'
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            alert('the export product was deleted successfully',data);
+            setExportsList(exportsList.filter(product => product._id !== _id));
+        })
+    }
+
     return (
         <div className='space-y-10 px-3 mt-10'>
             <div className='text-center'>
@@ -23,7 +35,7 @@ const MyExports = () => {
             </div>
             <div className="grid grid-cols-3 gap-5">
                 {
-                    exportsList.map(product=><ExportedProductCard key={product._id} product={product}></ExportedProductCard>)
+                    exportsList.map(product=><ExportedProductCard handleDelete={handleDelete} key={product._id} product={product}></ExportedProductCard>)
                 }
             </div>
         </div>

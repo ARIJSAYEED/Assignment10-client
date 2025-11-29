@@ -1,18 +1,8 @@
 import React from 'react';
 
-const ExportedProductCard = ({ product }) => {
+const ExportedProductCard = ({ product,handleDelete }) => {
 
-    const handleDelete=(_id)=>{
-        console.log(product._id);
-        // delete that product from database
-        fetch(`http://localhost:3000/products/${_id}`,{
-            method:'DELETE'
-        })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log('the export product was deleted successfully',data);
-        })
-    }
+    
     return (
         <div className='border border-neutral-300 p-5 rounded-lg shadow-lg space-y-5 hover:scale-105 transition-all duration-300'>
             <div>
