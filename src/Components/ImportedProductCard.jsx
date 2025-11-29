@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
- 
-const ProductCard = ({ product }) => {
+
+const ImportedProductCard = ({ product }) => {
     return (
         <div className='border border-neutral-300 p-5 rounded-lg shadow-lg space-y-5 hover:scale-105 transition-all duration-300'>
             <div>
@@ -30,14 +29,12 @@ const ProductCard = ({ product }) => {
                 </div>
             </div>
             <div>
-                <Link to={`/productDetails/${product._id}`}>
-                    <button className='btn btn-hubprimary capitalize w-full'>
-                        see details
-                    </button>
-                </Link>
+                <button className='btn btn-hubprimary capitalize w-full'>
+                    Delete
+                </button>
             </div>
         </div>
     );
 };
 
-export default ProductCard;
+export default ImportedProductCard;

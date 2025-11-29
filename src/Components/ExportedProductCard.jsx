@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
- 
-const ProductCard = ({ product }) => {
+
+const ExportedProductCard = ({ product }) => {
     return (
         <div className='border border-neutral-300 p-5 rounded-lg shadow-lg space-y-5 hover:scale-105 transition-all duration-300'>
             <div>
@@ -29,15 +28,16 @@ const ProductCard = ({ product }) => {
                     <p>By: {product.seller_name}</p>
                 </div>
             </div>
-            <div>
-                <Link to={`/productDetails/${product._id}`}>
-                    <button className='btn btn-hubprimary capitalize w-full'>
-                        see details
-                    </button>
-                </Link>
+            <div className='flex justify-between'>
+                <button className='btn btn-hubprimary capitalize w-1/3'>
+                    update
+                </button>
+                <button className='btn btn-huboutline capitalize w-1/3'>
+                    delete
+                </button>
             </div>
         </div>
     );
 };
 
-export default ProductCard;
+export default ExportedProductCard;

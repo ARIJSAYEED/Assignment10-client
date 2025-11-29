@@ -11,11 +11,10 @@ import Login from './Components/Login.jsx'
 import Register from './Components/Register.jsx'
 import AuthProvider from './Auth/AuthProvider.jsx'
 import MyExports from './Components/MyExports.jsx'
-import MyImports from './MyImports.jsx'
 import ExportProducts from './Components/ExportProducts.jsx'
-import ImportProducts from './Components/ImportProducts.jsx'
 import PrivateRoute from './PrivateRoute/PrivateRoute.jsx'
 import ProductDetails from './Components/ProductDetails.jsx'
+import MyImports from './Components/MyImports.jsx'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/myimports',
+        loader:()=>fetch('http://localhost:3000/myimports'),
         element: <PrivateRoute>
           <MyImports></MyImports>
         </PrivateRoute>
@@ -56,12 +56,12 @@ const router = createBrowserRouter([
           <ExportProducts></ExportProducts>
         </PrivateRoute>
       },
-      {
-        path: '/importProducts',
-        element: <PrivateRoute>
-          <ImportProducts></ImportProducts>
-        </PrivateRoute>
-      }
+      // {
+      //   path: '/importProducts',
+      //   element: <PrivateRoute>
+      //     <ImportProducts></ImportProducts>
+      //   </PrivateRoute>
+      // }
     ]
   },
 
