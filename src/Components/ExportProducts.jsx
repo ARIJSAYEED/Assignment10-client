@@ -1,5 +1,6 @@
 import React, { use, useState } from 'react';
 import { AuthContext } from '../Auth/AuthContext';
+import { toast } from 'react-toastify';
 
 const ExportProducts = () => {
     let { user } = use(AuthContext)
@@ -31,7 +32,6 @@ const ExportProducts = () => {
             seller_image: seller_image,
             created_at: new Date().toISOString() 
         }
-        console.log(newExport);
 
         fetch('http://localhost:3000/products',{
             method:'POST',
@@ -46,7 +46,7 @@ const ExportProducts = () => {
             newExport._id = data.insertedId;
             const newExports =[...exports,newExport]
             setExports(newExports)
-            alert('The product has been added successfully')
+            toast('The product has been added successfully')
         })
     }
 

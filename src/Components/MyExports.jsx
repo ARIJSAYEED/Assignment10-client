@@ -1,11 +1,11 @@
 import React, { useState, useEffect, use } from "react";
 import { AuthContext } from "../Auth/AuthContext";
 import ExportedProductCard from "./ExportedProductCard";
+import { toast } from "react-toastify";
 
 const MyExports = () => {
     const { user } = use(AuthContext);
     const [exportsList, setExportsList] = useState([]);
-    console.log(exportsList);
 
     useEffect(() => {
         // if (!user?.email) return;
@@ -22,7 +22,7 @@ const MyExports = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            alert('the export product was deleted successfully',data);
+            toast('the export product was deleted successfully',data);
             setExportsList(exportsList.filter(product => product._id !== _id));
         })
     }

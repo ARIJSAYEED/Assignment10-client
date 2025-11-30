@@ -4,7 +4,6 @@ import ProductCard from './ProductCard';
 
 const AllProducts = () => {
     let products = useLoaderData()
-    console.log(products);
     return (
         <div className='space-y-10 sm:space-y-4 sm:px-1 px-3 mt-10'>
             <div className='text-center'>

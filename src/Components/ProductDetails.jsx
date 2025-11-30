@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { FaArrowLeft } from "react-icons/fa6";
 import { AuthContext } from '../Auth/AuthContext';
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
     const { user } = useContext(AuthContext);
@@ -28,8 +29,7 @@ const ProductDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                alert('The product has been added to My Imports');
+                toast('The product has been added to My Imports');
 
                 fetch(`http://localhost:3000/products/${product._id}`, {
                     method: "PATCH",

@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import ImportedProductCard from './ImportedProductCard';
 import { AuthContext } from '../Auth/AuthContext';
+import { toast } from 'react-toastify';
 
 const MyImports = () => {
 
@@ -8,10 +9,8 @@ const MyImports = () => {
 
     let [importList, setImportList] = useState([]);
 
-    console.log('myimport state', importList);
 
     const handleRemove = (_id) => {
-        console.log(_id);
 
         fetch(`http://localhost:3000/myimports/${_id}`, {
             method: 'DELETE'
@@ -19,7 +18,7 @@ const MyImports = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount) {
-                    alert('The product has been removed successfully')
+                    toast('The product has been removed successfully')
                     setImportList(importList.filter(product => product._id !== _id));
                 }
             })

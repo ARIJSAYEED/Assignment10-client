@@ -3,7 +3,6 @@ import ProductCard from './ProductCard';
 
 const LatestProduct = ({ latestProductsPromise }) => {
     let latestProducts = use(latestProductsPromise)
-    console.log(latestProducts);
     return (
         <div>
             <div className='space-y-10 px-3'>
