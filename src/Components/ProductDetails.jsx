@@ -21,7 +21,6 @@ const ProductDetails = () => {
         };
         delete newImport._id;
 
-        // Step 1: Add to My Imports
         fetch(`http://localhost:3000/myimports?email=${user.email}`, {
             method: "POST",
             headers: { 'content-type': 'application/json' },
@@ -32,7 +31,6 @@ const ProductDetails = () => {
                 console.log(data);
                 alert('The product has been added to My Imports');
 
-                // Step 2: Update available quantity in the database
                 fetch(`http://localhost:3000/products/${product._id}`, {
                     method: "PATCH",
                     headers: { 'content-type': 'application/json' },
@@ -40,18 +38,17 @@ const ProductDetails = () => {
                 })
                     .then(res => res.json())
                     .then(updatedProduct => {
-                        // Step 3: Update local state
                         setAvailableQty(updatedProduct.quantity);
-                        setImportQty(1); // reset input
+                        setImportQty(1); 
                     });
             });
     };
 
     return (
         <div className='py-10 px-3'>
-            <div className='grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-5'>
                 <div>
-                    <img className='h-full object-cover rounded-lg' src={product.image} alt={product.title} />
+                    <img className='h-full w-full object-cover rounded-lg' src={product.image} alt={product.title} />
                 </div>
 
                 <div className='space-y-5'>
@@ -60,10 +57,10 @@ const ProductDetails = () => {
                         <p className='text-md font-semibold'>Back to Home</p>
                     </Link>
 
-                    <h1 className='text-5xl font-bold logotext'>{product.title}</h1>
+                    <h1 className='text-3xl md:text-5xl font-bold logotext'>{product.title}</h1>
                     <div className='border-b'></div>
 
-                    <div className='flex justify-between'>
+                    <div className='flex flex-col sm:flex-row justify-between gap-3'>
                         <p className='text-md font-semibold'>Rating: {product.rating}</p>
                         <p className='text-md font-semibold'>From: {product.origin}</p>
                     </div>
@@ -71,24 +68,24 @@ const ProductDetails = () => {
                     <div className='border-b'></div>
 
                     <div>
-                        <h1 className='text-2xl font-semibold logotext'>Product Description:</h1>
+                        <h1 className='text-xl md:text-2xl font-semibold logotext'>Product Description:</h1>
                         <p className='font-thin'>{product.description}</p>
                     </div>
 
                     <div>
-                        <h1 className='text-2xl font-semibold logotext'>Seller Information:</h1>
+                        <h1 className='text-xl md:text-2xl font-semibold logotext'>Seller Information:</h1>
                         <div className='flex gap-5 items-center'>
                             <img className='h-15 w-15 rounded-full p-2 btn' src={product.seller_image} alt={product.seller_name} />
                             <div>
-                                <p><span className='text-md font-semibold'>Name: </span>{product.seller_name}</p>
-                                <p><span className='text-md font-semibold'>Email: </span>{product.email}</p>
+                                <p className='text-sm md:text-base'><span className='font-semibold'>Name: </span>{product.seller_name}</p>
+                                <p className='text-sm md:text-base'><span className='font-semibold'>Email: </span>{product.email}</p>
                             </div>
                         </div>
                     </div>
 
                     <div className='border-b'></div>
 
-                    <div className='flex justify-between items-center'>
+                    <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3'>
                         <p className='text-md font-semibold'>Available Quantity: {availableQty}</p>
                         <button className='btn btn-huboutline'>${product.price}</button>
                     </div>

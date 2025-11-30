@@ -4,7 +4,6 @@ import { AuthContext } from '../Auth/AuthContext';
 const ExportProducts = () => {
     let { user } = use(AuthContext)
     let [exports,setExports]=useState([])
-    // console.log(user);
     const handleExport = (e) => {
         e.preventDefault()
 
@@ -18,8 +17,6 @@ const ExportProducts = () => {
         let seller_name = e.target.seller_name.value;
         let email = e.target.email.value;
         let seller_image = e.target.seller_image.value;
-
-        // console.log(title, image, price, origin, description, quantity, rating, seller_name, email, seller_image);
 
         const newExport = {
             title: title,
@@ -36,7 +33,6 @@ const ExportProducts = () => {
         }
         console.log(newExport);
 
-        // insert this export to the products database 
         fetch('http://localhost:3000/products',{
             method:'POST',
             headers:{
@@ -59,14 +55,13 @@ const ExportProducts = () => {
             <form onSubmit={handleExport} className='space-y-5 flex flex-col gap-5 items-center'>
                 <div>
                     <div className='text-center'>
-                        <h1 className='text-5xl font-bold logotext'>Please ! Fill this form</h1>
-                        <p className='text-md font-thin'>Help us by giving the authentic information</p>
+                        <h1 className='text-3xl md:text-5xl font-bold logotext'>Please ! Fill this form</h1>
+                        <p className='text-sm md:text-md font-thin'>Help us by giving the authentic information</p>
                     </div>
                 </div>
-                <div className='border shadow-2xl w-[600px] p-5 rounded-lg space-y-3'>
+                <div className='border shadow-2xl w-full max-w-[600px] p-3 md:p-5 rounded-lg space-y-3'>
                     <div className='flex flex-col space-y-5'>
-                        <h1 className='text-3xl font-bold logotext text-center'>Product Information</h1>
-                        {/* title  */}
+                        <h1 className='text-2xl md:text-3xl font-bold logotext text-center'>Product Information</h1>
                         <div>
                             <label className='font-semibold'>Product Name</label>
                             <input className='input w-full' type="text" name="title" id="" />
@@ -97,7 +92,7 @@ const ExportProducts = () => {
                         </div>
                     </div>
                     <div className='flex flex-col space-y-5'>
-                        <h1 className='text-3xl font-bold logotext text-center'>Seller Information</h1>
+                        <h1 className='text-2xl md:text-3xl font-bold logotext text-center'>Seller Information</h1>
                         <div>
                             <label className='font-semibold'>Name</label>
                             <input className='input w-full' type="text" name="seller_name" defaultValue={user.displayName} readOnly id="" />

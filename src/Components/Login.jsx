@@ -12,7 +12,7 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(email, password);
-
+        
         signInUser(email, password)
             .then(result => {
                 alert('logged in successfully')
@@ -22,7 +22,6 @@ const Login = () => {
                 console.log(error);
             })
     }
-    
     const handleGoogleSignin = () => {
         signInWithGoogle()
             .then(result => {
@@ -34,34 +33,41 @@ const Login = () => {
     }
     return (
         <div>
-            <div className='space-y-5 p-20 flex flex-col justify-center items-center'>
+            <div className='space-y-5 p-5 md:p-20 flex flex-col justify-center items-center'>
                 <div className="text-center">
-                    <h1 className="text-5xl font-bold">Login now!</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold">Login now!</h1>
                 </div>
                 <div className="border border-neutral-400 rounded-lg bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <div className="card-body">
+                    <div className="card-body p-5 md:p-8">
                         <form onSubmit={handleSignIn}>
-                            <fieldset className="fieldset">
+                            <fieldset className="fieldset space-y-3">
 
                                 {/* email  */}
-                                <label className='font-semibold'>Email</label>
-                                <input type="email" name='email' className="input" placeholder="Email" />
+                                <div>
+                                    <label className='font-semibold text-sm md:text-base'>Email</label>
+                                    <input type="email" name='email' className="input w-full" placeholder="Email" />
+                                </div>
 
                                 {/* password  */}
-                                <label className='font-semibold'>Password</label>
-                                <input type="password" name='password' className="input" placeholder="Password" />
                                 <div>
-                                    <p className='text-center font-semibold text-neutral-600'>or</p>
+                                    <label className='font-semibold text-sm md:text-base'>Password</label>
+                                    <input type="password" name='password' className="input w-full" placeholder="Password" />
                                 </div>
-                                <button className='btn btn-huboutline capitalize' onClick={handleGoogleSignin}>
-                                    <FcGoogle></FcGoogle>
+                                
+                                <div>
+                                    <p className='text-center font-semibold text-neutral-600 text-sm'>or</p>
+                                </div>
+                                
+                                <button type="button" className='btn btn-huboutline capitalize w-full text-sm md:text-base' onClick={handleGoogleSignin}>
+                                    <FcGoogle className="text-xl"/>
                                     signin with google
                                 </button>
-                                <button className="btn btn-hubprimary mt-4">Login</button>
+                                
+                                <button type="submit" className="btn btn-hubprimary w-full text-sm md:text-base">Login</button>
                             </fieldset>
                         </form>
-                        <div className='text-center'>
-                            <p>New to our website? <Link className='link font-semibold' to='/auth/register'>Register Now!</Link></p>
+                        <div className='text-center mt-3'>
+                            <p className='text-sm md:text-base'>New to our website? <Link className='link font-semibold' to='/auth/register'>Register Now!</Link></p>
                         </div>
                     </div>
                 </div>

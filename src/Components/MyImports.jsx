@@ -13,7 +13,6 @@ const MyImports = () => {
     const handleRemove = (_id) => {
         console.log(_id);
 
-        // delete imported product from the database imported collection
         fetch(`http://localhost:3000/myimports/${_id}`, {
             method: 'DELETE'
         })
@@ -21,7 +20,6 @@ const MyImports = () => {
             .then(data => {
                 if (data.deletedCount) {
                     alert('The product has been removed successfully')
-                    // Remove from UI state
                     setImportList(importList.filter(product => product._id !== _id));
                 }
             })
@@ -42,7 +40,7 @@ const MyImports = () => {
                 <h1 className='text-5xl font-bold logotext'>Your Imported Products</h1>
                 <p className='font-thin'>Browse our complete range of globally sourced products, carefully selected to meet diverse business needs. From essential goods to premium items,<br /> we offer reliable, high-quality options to support your import and export operations</p>
             </div>
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:gap-1 gap-5">
                 {
                     importList.map(product => <ImportedProductCard
                         handleRemove={handleRemove}

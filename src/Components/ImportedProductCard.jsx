@@ -2,18 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const ImportedProductCard = ({ product, handleRemove }) => {
-    // const handleRemove = (_id) => {
-    //     console.log(_id);
 
-    //     // delete imported product from the database imported collection
-    //     fetch(`http://localhost:3000/myimports/${_id}`, {
-    //         method: 'DELETE'
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log('the import product was deleted successfully', data);
-    //         })
-    // }
     return (
         <div className='border border-neutral-300 p-5 rounded-lg shadow-lg space-y-5 hover:scale-105 transition-all duration-300'>
             <div>
