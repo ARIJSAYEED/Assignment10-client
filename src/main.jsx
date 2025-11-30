@@ -27,13 +27,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/allproducts',
-        loader: () => fetch('http://localhost:3000/products'),
+        loader: () => fetch('https://assignment-10-server-delta-seven.vercel.app/products'),
         element: <AllProducts></AllProducts>
       },
       {
         path: '/productDetails/:id',
-        loader:({params})=>fetch(`http://localhost:3000/productDetails/${params.id}`),
-        element:<PrivateRoute>
+        loader: ({ params }) => fetch(`https://assignment-10-server-delta-seven.vercel.app/productDetails/${params.id}`),
+        element: <PrivateRoute>
           <ProductDetails></ProductDetails>
         </PrivateRoute>
       },
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/myimports',
-        loader:()=>fetch('http://localhost:3000/myimports'),
+        loader: () => fetch('https://assignment-10-server-delta-seven.vercel.app/myimports'),
         element: <PrivateRoute>
           <MyImports></MyImports>
         </PrivateRoute>

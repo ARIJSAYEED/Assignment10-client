@@ -12,7 +12,7 @@ const MyImports = () => {
 
     const handleRemove = (_id) => {
 
-        fetch(`http://localhost:3000/myimports/${_id}`, {
+        fetch(`https://assignment-10-server-delta-seven.vercel.app/myimports/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -26,7 +26,7 @@ const MyImports = () => {
 
     useEffect(() => {
         if (!user?.email) return;
-        fetch(`http://localhost:3000/myimports?email=${user.email}`)
+        fetch(`https://assignment-10-server-delta-seven.vercel.app/myimports?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setImportList(data)

@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const ProductDetails = () => {
     const { user } = useContext(AuthContext);
     const product = useLoaderData();
-    const [availableQty, setAvailableQty] = useState(product.quantity); 
+    const [availableQty, setAvailableQty] = useState(product.quantity);
 
     const [importQty, setImportQty] = useState(1);
 
@@ -22,7 +22,7 @@ const ProductDetails = () => {
         };
         delete newImport._id;
 
-        fetch(`http://localhost:3000/myimports?email=${user.email}`, {
+        fetch(`https://assignment-10-server-delta-seven.vercel.app/myimports?email=${user.email}`, {
             method: "POST",
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newImport)
@@ -31,7 +31,7 @@ const ProductDetails = () => {
             .then(data => {
                 toast('The product has been added to My Imports');
 
-                fetch(`http://localhost:3000/products/${product._id}`, {
+                fetch(`https://assignment-10-server-delta-seven.vercel.app/products/${product._id}`, {
                     method: "PATCH",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify({ quantity: availableQty - importQty })
@@ -39,7 +39,7 @@ const ProductDetails = () => {
                     .then(res => res.json())
                     .then(updatedProduct => {
                         setAvailableQty(updatedProduct.quantity);
-                        setImportQty(1); 
+                        setImportQty(1);
                     });
             });
     };

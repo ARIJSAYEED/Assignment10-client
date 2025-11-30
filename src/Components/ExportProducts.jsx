@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 const ExportProducts = () => {
     let { user } = use(AuthContext)
-    let [exports,setExports]=useState([])
+    let [exports, setExports] = useState([])
     const handleExport = (e) => {
         e.preventDefault()
 
@@ -30,24 +30,24 @@ const ExportProducts = () => {
             seller_name: seller_name,
             email: email,
             seller_image: seller_image,
-            created_at: new Date().toISOString() 
+            created_at: new Date().toISOString()
         }
 
-        fetch('http://localhost:3000/products',{
-            method:'POST',
-            headers:{
-                'content-type':'application/json'
+        fetch('https://assignment-10-server-delta-seven.vercel.app/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body:JSON.stringify(newExport)
+            body: JSON.stringify(newExport)
 
         })
-        .then(res=>res.json())
-        .then(data=>{
-            newExport._id = data.insertedId;
-            const newExports =[...exports,newExport]
-            setExports(newExports)
-            toast('The product has been added successfully')
-        })
+            .then(res => res.json())
+            .then(data => {
+                newExport._id = data.insertedId;
+                const newExports = [...exports, newExport]
+                setExports(newExports)
+                toast('The product has been added successfully')
+            })
     }
 
     return (

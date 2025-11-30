@@ -9,22 +9,22 @@ const MyExports = () => {
 
     useEffect(() => {
         // if (!user?.email) return;
-        fetch(`http://localhost:3000/myexports?email=${user.email}`)
+        fetch(`https://assignment-10-server-delta-seven.vercel.app/myexports?email=${user.email}`)
             .then(res => res.json())
             .then(data => setExportsList(data))
             .catch(err => console.log(err));
     }, [user]);
 
-    const handleDelete=(_id)=>{
+    const handleDelete = (_id) => {
         // delete that product from database
-        fetch(`http://localhost:3000/products/${_id}`,{
-            method:'DELETE'
+        fetch(`https://assignment-10-server-delta-seven.vercel.app/products/${_id}`, {
+            method: 'DELETE'
         })
-        .then(res=>res.json())
-        .then(data=>{
-            toast('the export product was deleted successfully',data);
-            setExportsList(exportsList.filter(product => product._id !== _id));
-        })
+            .then(res => res.json())
+            .then(data => {
+                toast('the export product was deleted successfully', data);
+                setExportsList(exportsList.filter(product => product._id !== _id));
+            })
     }
 
     return (
@@ -35,7 +35,7 @@ const MyExports = () => {
             </div>
             <div className="grid grid-cols-3 gap-5">
                 {
-                    exportsList.map(product=><ExportedProductCard handleDelete={handleDelete} key={product._id} product={product}></ExportedProductCard>)
+                    exportsList.map(product => <ExportedProductCard handleDelete={handleDelete} key={product._id} product={product}></ExportedProductCard>)
                 }
             </div>
         </div>
